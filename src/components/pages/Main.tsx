@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components'
 import { COLORS } from '../../constants/colors';
 import MainCard from '../cards/MainCard'
 
-let Main = () => {
+interface PageInterface {
+    navigate: Function;
+}
+
+let Main:FC<PageInterface> = (props) => {
     return (
         <Container>
             <div 
@@ -20,18 +24,21 @@ let Main = () => {
                     cardTitle='Add Fact'
                     cardPoints={['Covid Variant', 'Covid Symptoms', 'Underlying Conditions']}
                     color={COLORS.orange}
+                    onClick={()=>props.navigate("addFact")}
                 />
                 <MainCard
                     imageUrl='images/diagnosis.png'
                     cardTitle='Diagonsis'
-                    cardPoints={['Covid Variant', 'Covid Symptoms', 'Underlying Conditions']}
+                    cardPoints={['Covid Status Report']}
                     color={COLORS.blue}
+                    onClick={()=>props.navigate("diagnosis")}
                 />
                 <MainCard
                     imageUrl='images/statistics.png'
                     cardTitle='Statistics'
-                    cardPoints={['Covid Variant', 'Covid Symptoms', 'Underlying Conditions']}
+                    cardPoints={['Infection Count', 'Condition Stats', 'Symptom Stats', 'More']}
                     color={COLORS.purple}
+                    onClick={()=>props.navigate("stats")}
                 />
             </CardContainer>
         </Container>

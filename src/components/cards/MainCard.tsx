@@ -3,15 +3,18 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
 interface MainCardInterface {
-    imageUrl: string,
-    cardTitle: string,
-    cardPoints: Array<string>
-    color: string
+    imageUrl: string;
+    cardTitle: string;
+    cardPoints: Array<string>;
+    color: string;
+    onClick: Function;
 }
 
 let MainCard: FC<MainCardInterface> = (props) => {
     return (
-        <Container>
+        <Container
+            onClick={()=>props.onClick()}
+        >
             <div style={{
                 flex: 2,
                 display: 'flex',
@@ -69,6 +72,9 @@ let Container = styled.div`
     @media only screen and (min-width: 1024px) {
         margin-left: 10px;
         margin-right: 10px;
+    }
+    &:hover{
+        cursor: pointer;
     }
 `;
 
